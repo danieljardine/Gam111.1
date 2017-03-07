@@ -1,5 +1,4 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
@@ -8,8 +7,8 @@ public class UIManager : MonoBehaviour {
 
     GameManager gameManager;
     GameObject[] pauseObjects;
-    TextAlignment myText;
-    public Text health, currentTime, score, bestScore;
+    Text myText;
+    public Text health, lives, currentTime, score, bestScore;
 
     // Use this for initialization
     void Start() {
@@ -24,12 +23,13 @@ public class UIManager : MonoBehaviour {
     // Update is called once per frame
     void Update() {
         //Show relative texts
-        score.text = "Score: " + gameManager.bestScore;
+        score.text = "Score: " + gameManager.score;
         health.text = "Health: " + gameManager.health;
+        lives.text = "Lives: " + gameManager.lives;
         bestScore.text = "Best Score: " + gameManager.bestScore;
-        currentTime.text = "Current Time: " + gameManager.currentTime;
+        currentTime.text = "Time: " + gameManager.currentTime;
 
-        //Pause Control
+        //Pause control
         if (Input.GetKeyDown("escape"))
         {
             if (Time.timeScale == 1)
@@ -43,17 +43,19 @@ public class UIManager : MonoBehaviour {
                 hidePaused();
             }
         }
-        //If time = 0 then game over
+        //If time = 0 then load the game over screen
         if (gameManager.currentTime > 300)
         {
             SceneManager.LoadScene("gameover");
         }
     }
+    //Reloads the Level
     public void Reload()
     {
-        SceneManager.LoadScene("Lvl1");
+        SceneManager.LoadScene("artillery");
     }
     public void pauseControl()
+    //Determines if the game is paused or not
     {
         if (Time.timeScale == 1)
         {
@@ -66,7 +68,7 @@ public class UIManager : MonoBehaviour {
             hidePaused();
         }
     }
-    //Show objects tagged with ShowOnPause
+    //shows objects with ShowOnPause tag
     public void showPaused()
     {
         foreach (GameObject g in pauseObjects)
@@ -74,7 +76,7 @@ public class UIManager : MonoBehaviour {
             g.SetActive(true);
         }
     }
-    //Hide objects tagged with ShowOnPause
+    //hides objects with ShowOnPause tag
     public void hidePaused()
     {
         foreach (GameObject g in pauseObjects)
@@ -82,7 +84,7 @@ public class UIManager : MonoBehaviour {
             g.SetActive(false);
         }
     }
-    //Load Main Menu
+    //loads Main Menu
     public void mainMenu()
     {
         SceneManager.LoadScene("mainmenu");
