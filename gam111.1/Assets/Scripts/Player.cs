@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Player : MonoBehaviour {
 
+    GameManager gameManager;
+
     public float health = 100.0f;
 
     public Rigidbody rb;
@@ -11,8 +13,10 @@ public class Player : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-		
-	}
+
+        gameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
+
+    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -34,6 +38,7 @@ public class Player : MonoBehaviour {
         if (other.gameObject.CompareTag("Pick Up"))
         {
             other.gameObject.SetActive(false);
+            gameManager.score =+ 1;
         }
     }
 }
