@@ -21,7 +21,7 @@ public class GameManager : MonoBehaviour {
     void Update () {
         //If 5 minutes pass, end the game
         if (currentTime == 300)
-            SceneManager.LoadScene("gameover");
+            SceneManager.LoadScene("Game Over");
         //Increment currentTime if player is alive
         if (playerAlive)
             currentTime += Time.deltaTime;
@@ -29,7 +29,7 @@ public class GameManager : MonoBehaviour {
         //If the player dies, load the game over scene, set the best score and time
         if (lives <= 0)
         {
-            SceneManager.LoadScene("gameover");
+            SceneManager.LoadScene("Game Over");
             PlayerPrefs.SetFloat("BestScore", score);
             PlayerPrefs.SetFloat("BestTime", currentTime);
             playerAlive = false;

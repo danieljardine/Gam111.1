@@ -46,13 +46,13 @@ public class UIManager : MonoBehaviour {
         //If time = 0 then load the game over screen
         if (gameManager.currentTime > 300)
         {
-            SceneManager.LoadScene("gameover");
+            SceneManager.LoadScene("Game Over");
         }
     }
     //Reloads the Level
     public void Reload()
     {
-        SceneManager.LoadScene("artillery");
+        SceneManager.LoadScene("Lvl1");
     }
     public void pauseControl()
     //Determines if the game is paused or not
@@ -87,6 +87,6 @@ public class UIManager : MonoBehaviour {
     //loads Main Menu
     public void mainMenu()
     {
-        SceneManager.LoadScene("mainmenu");
+        SceneManager.LoadScene("Main Menu");
     }
 }
