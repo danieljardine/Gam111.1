@@ -10,7 +10,9 @@ public class CameraTrack : MonoBehaviour
 
     void Start()
     {
+        //Follow the players position
         offset = transform.position - player.transform.position;
+        DontDestroyOnLoad(gameObject);
     }
 
     void LateUpdate()
